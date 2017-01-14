@@ -1,0 +1,18 @@
+{
+    "daysToSkip" : ["Saturday", "Sunday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    "datesToSkip" : ["2017-2-20"],
+    "teachingTeams" : [
+        [
+            "sampleemail123@gmail.com"
+        ],
+        [
+            "sampleemail123@gmail.com",
+            "sampleemail456@gmail.com"
+        ]
+    ],
+    "startDate" : "2017-1-23",
+    "endDate" : "2017-2-24",
+    "startTime" : "9:15:00",
+    "endTime" : "10:00:00",
+    "calendar" : "8ceufv81pbq520lqrolt502m90@group.calendar.google.com"
+}
