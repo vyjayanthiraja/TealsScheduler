@@ -32,6 +32,40 @@ catch (e) {
     console.error("Error in reading config file " + e);
 }
 
+function DeleteEvents(auth, config, whatif) {
+    var daysToDelete = _.map(config['daysToDelete'], ConvertDayString);
+    var startDate = moment(config['startDate'],'YYYY-MM-DD');
+    var endDate = moment(config['endDate'], 'YYYY-MM-DD');
+    var calendarId = config['calendar'];
+    var timeMin = new Date(startDate.year(), startDate.month(), startDate.date(), 1, 0, 0);
+    var timeMax = new Date(endDate.year(), endDate.month(), endDate.date(), 1, 0, 0);
+    calendar.listEvents(auth, calendarId, timeMax, timeMin).then(function (res){
+        var deleteTasks = [];
+        for(var i = 0; i<res.items.length;i++)
+        {
+            var date = new Date(res.items[i]['start']['dateTime']);
+            var day = date.getDay();
+            if(daysToDelete.indexOf(day) > -1)
+            {
+                if(whatif)
+                {
+                    console.log("Deleting event " + JSON.stringify(res.items[i]));
+                }
+                else
+                {
+                    deleteTasks.push(calendar.deleteEvent(auth, calendarId, res.items[i].id));
+                }
+            }
+        }
+
+        promise.all(deleteTasks).done(function(results){
+            console.log("Finished deleting all events");
+        }, function(err){
+            console.log("Error occurred when deleting events" + err);
+        })
+    });
+}
+
 function ScheduleEvents(auth, config, whatif) {
     var daysToSkip = _.map(config['daysToSkip'], ConvertDayString);
     var datesToSkipConfig = config['datesToSkip'];

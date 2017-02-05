@@ -1,25 +1,23 @@
 {
-    // Days when there is no class (usually weekends except for Monday schedules)
     "daysToSkip" : ["Saturday", "Sunday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-    // Specific dates when there is no class
     "datesToSkip" : ["2017-2-20"],
-    /* The different teaching teams, the program will cycle through them when creating the events
-       The first team in the list will be scheduled for the first class*/
     "teachingTeams" : [
         [
-            // "nikhilsemail@gmail.com",
-            // "vyjayanthisemail@gmail.com"
+            { "email" : "nicholaslcervantes@gmail.com" }
         ],
         [
-            // "vyjayanthisemail@gmail.com",
-            // "sethsemail@gmail.com"
+            { "email" : "vyjayanthi.raja@gmail.com" }
+        ],
+        [
+            { "email" : "nik.arjunagi@gmail.com" }
+        ],
+        [
+            { "email" : "lifland37@gmail.com" }
         ]
     ],
-    "startDate" : "2017-1-23",
-    "endDate" : "2017-2-24",
+    "startDate" : "2017-2-04",
+    "endDate" : "2017-3-24",
     "startTime" : "9:15:00",
     "endTime" : "10:00:00",
-
-    // The calendar ID (should not require any change)
     "calendar" : "8ceufv81pbq520lqrolt502m90@group.calendar.google.com"
 }
